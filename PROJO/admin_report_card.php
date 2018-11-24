@@ -5,24 +5,25 @@ include 'server.php';
 
 if (isset($_POST['submit'])){
 	
-    $maths =  mysqli_real_escape_string($_POST['maths']);
-	$english =  mysqli_real_escape_string($_POST['english']);
-	$kiswahili =  mysqli_real_escape_string($_POST['kiswahili']);
-	$physics =  mysqli_real_escape_string($_POST['physics']);
-	$biology =  mysqli_real_escape_string($_POST['biology']);
-	$chemistry =  mysqli_real_escape_string($_POST['chemistry']);
-	$history =  mysqli_real_escape_string($_POST['history']);
-	$cre =  mysqli_real_escape_string($_POST['cre']);
+    $test_1_mark =  mysqli_real_escape_string($_POST['test_1_mark']);
+    $test_1_total =  mysqli_real_escape_string($_POST['test_1_total']);
+    $assignment_1_mark =  mysqli_real_escape_string($_POST['assignment_1_mark']);
+    $assignment_1_total =  mysqli_real_escape_string($_POST['assignment_1_total']);
+    $exam_mark =  mysqli_real_escape_string($_POST['exam_mark']);
+    $exam_total =  mysqli_real_escape_string($_POST['exam_total']);
 	
-	$marks_submit= "INSERT INTO subjects (maths	, english, kiswahili, physics, biology, chemistry, history, cre	) 
-					  VALUES('$maths', '$english', '$kiswahili', '$physics', '$biology', '$chemistry', '$history', '$cre')";
-					  if($db->query($marks_submit) ===TRUE ){
-						  header("Location: admin_report_card.php");
-						  exit();
-					  }
-					  else{
-						  print "Failed:".$db->error;
-					  }
+	
+	$maths_submit= "INSERT INTO maths (test_1_mark, test_1_total, assignment_1_mark, assignment_1_total, exam_mark, exam_total) 
+					  VALUES('$test_1_mark', '$test_1_total', '$assignment_1_mark', '$assignment_1_total', '$exam_mark', '$exam_total')";
+					  
+					  
+	  if($db->query($marks_submit) ===TRUE ){
+		  header("Location: admin_report_card.php");
+		  exit();
+	  }
+	  else{
+		  print "Failed:".$db->error;
+	  }
 }
 
 ?>
@@ -43,7 +44,9 @@ if (isset($_POST['submit'])){
   <tr>
 	<th class="tg-s268">Firstname</th>
 	<th class="tg-s268">Lastname</th>
-    <th class="tg-s268">Maths</th>
+    <th class="tg-s268">Maths Test</th>
+    <th class="tg-s268">Maths Assignment</th>
+    <th class="tg-s268">Maths Exam</th>
     <th class="tg-s268">English</th>
     <th class="tg-s268">Kiswahili</th>
     <th class="tg-0lax">Physics</th>
@@ -69,7 +72,9 @@ if (isset($_POST['submit'])){
 					<td class="tg-s268" style="display: none;">'.$row["id"].'</td>
 					<td class="tg-s268">'.$row["firstname"].'</td>
 					<td class="tg-s268">'.$row["lastname"].'</td>
-					<td class="tg-s268"><input type="text" name="maths"></td>
+					<td class="tg-s268"><input type="text" name="test 1 total"></td>
+					<td class="tg-s268"><input type="text" name="assignment 1 total"></td>
+					<td class="tg-s268"><input type="text" name="exam total"></td>
 					<td class="tg-s268"><input type="text" name="english"></td>
 					<td class="tg-s268"><input type="text" name="kiswahili"></td>
 					<td class="tg-0lax"><input type="text" name="physics"></td>
