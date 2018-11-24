@@ -41,7 +41,8 @@ if (isset($_POST['submit'])){
 <form method ="POST" action = "admin_report_card.php">
 <table class="tg">
   <tr>
-    <th class="tg-s268">Name</th>
+	<th class="tg-s268">Firstname</th>
+	<th class="tg-s268">Lastname</th>
     <th class="tg-s268">Maths</th>
     <th class="tg-s268">English</th>
     <th class="tg-s268">Kiswahili</th>
@@ -50,90 +51,40 @@ if (isset($_POST['submit'])){
     <th class="tg-0lax">Chemistry</th>
     <th class="tg-0lax">History </th>
     <th class="tg-0lax">C.R.E</th>
+    <th class="tg-0lax">Save</th>
   </tr>
+
+
+<?php 
   
-  <?php 
+  $sql="SELECT id, firstname, lastname FROM students ";
   
-  $username='$username';
-  $sql="SELECT username FROM users ";
-  $calvin=$db->query($sql);
+  $students = $db->query($sql);
+  if ($students-> num_rows > 0){
+	  while ($row= $students->fetch_assoc())
+		{
+		  echo '
+			<form>
+				<tr>
+					<td class="tg-s268" style="display: none;">'.$row["id"].'</td>
+					<td class="tg-s268">'.$row["firstname"].'</td>
+					<td class="tg-s268">'.$row["lastname"].'</td>
+					<td class="tg-s268"><input type="text" name="maths"></td>
+					<td class="tg-s268"><input type="text" name="english"></td>
+					<td class="tg-s268"><input type="text" name="kiswahili"></td>
+					<td class="tg-0lax"><input type="text" name="physics"></td>
+					<td class="tg-0lax"><input type="text" name="biology"></td>
+					<td class="tg-0lax"><input type="text" name="chemistry"></td>
+					<td class="tg-0lax"><input type="text" name="history"></td>
+					<td class="tg-0lax"><input type="text" name="cre"></td>
+					<td class="tg-0lax"><input type="submit" name="submit" value="Save"></td>
+				</tr>
+			</form>';
+		}
+	}
   
   
-  while ($row=$calvin->fetch_assoc())
-  {
-	  
-  }
   ?>
-  
-  <tr>
-    <td <?php print $row['username'];?>></td>
-    <td class="tg-s268"><input type="text" name="maths"></td>
-    <td class="tg-s268"><input type="text" name="english"></td>
-    <td class="tg-s268"><input type="text" name="kiswahili"></td>
-    <td class="tg-0lax"><input type="text" name="physics"></td>
-    <td class="tg-0lax"><input type="text" name="biology"></td>
-    <td class="tg-0lax"><input type="text" name="chemistry"></td>
-    <td class="tg-0lax"><input type="text" name="history"></td>
-    <td class="tg-0lax"><input type="text" name="cre"></td>
-  </tr>
-  <tr>
-    <td <?php print $row['username'];?>></td>
-    <td class="tg-s268"><input type="text" name="maths"></td>
-    <td class="tg-s268"><input type="text" name="english"></td>
-    <td class="tg-s268"><input type="text" name="kiswahili"></td>
-    <td class="tg-0lax"><input type="text" name="physics"></td>
-    <td class="tg-0lax"><input type="text" name="biology"></td>
-    <td class="tg-0lax"><input type="text" name="chemistry"></td>
-    <td class="tg-0lax"><input type="text" name="history"></td>
-    <td class="tg-0lax"><input type="text" name="cre"></td>
-  </tr>
-  <tr>
-    <td <?php print $row['username'];?>></td>
-    <td class="tg-s268"><input type="text" name="maths"></td>
-    <td class="tg-s268"><input type="text" name="english"></td>
-    <td class="tg-s268"><input type="text" name="kiswahili"></td>
-    <td class="tg-0lax"><input type="text" name="physics"></td>
-    <td class="tg-0lax"><input type="text" name="biology"></td>
-    <td class="tg-0lax"><input type="text" name="chemistry"></td>
-    <td class="tg-0lax"><input type="text" name="history"></td>
-    <td class="tg-0lax"><input type="text" name="cre"></td>
-  </tr>
-  <tr>
-   <td <?php print $row['username'];?>></td>
-    <td class="tg-s268"><input type="text" name="maths"></td>
-    <td class="tg-s268"><input type="text" name="english"></td>
-    <td class="tg-s268"><input type="text" name="kiswahili"></td>
-    <td class="tg-0lax"><input type="text" name="physics"></td>
-    <td class="tg-0lax"><input type="text" name="biology"></td>
-    <td class="tg-0lax"><input type="text" name="chemistry"></td>
-    <td class="tg-0lax"><input type="text" name="history"></td>
-    <td class="tg-0lax"><input type="text" name="cre"></td>
-	</tr>
-	 <tr>
-    <td <?php print $row['username'];?>></td>
-    <td class="tg-s268"><input type="text" name="maths"></td>
-    <td class="tg-s268"><input type="text" name="english"></td>
-    <td class="tg-s268"><input type="text" name="kiswahili"></td>
-    <td class="tg-0lax"><input type="text" name="physics"></td>
-    <td class="tg-0lax"><input type="text" name="biology"></td>
-    <td class="tg-0lax"><input type="text" name="chemistry"></td>
-    <td class="tg-0lax"><input type="text" name="history"></td>
-    <td class="tg-0lax"><input type="text" name="cre"></td>
-  </tr>
-   <tr>
-    <td <?php print $row['username'];?>></td>
-    <td class="tg-s268"><input type="text" name="maths"></td>
-    <td class="tg-s268"><input type="text" name="english"></td>
-    <td class="tg-s268"><input type="text" name="kiswahili"></td>
-    <td class="tg-0lax"><input type="text" name="physics"></td>
-    <td class="tg-0lax"><input type="text" name="biology"></td>
-    <td class="tg-0lax"><input type="text" name="chemistry"></td>
-    <td class="tg-0lax"><input type="text" name="history"></td>
-    <td class="tg-0lax"><input type="text" name="cre"></td>
-	
-	 </br>
-	 </br>
-	<input type="submit" name="submit" value="Submit">
-  </tr>
-</form>
+</table>	  
 </body>
+</html>
